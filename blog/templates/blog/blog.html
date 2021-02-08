@@ -60,7 +60,7 @@
             <div class="navbar-nav ml-auto">
               <a class="nav-link" href="#">About me</a>
               <a class="nav-link" href="#">Facebook</a>
-              <a class="nav-link font-italic" href="/posts">Blog</a>
+              <a class="nav-link active" aria-current="page" font-italic" href="/posts">Blog</a>
 
             </div>
           </div>
@@ -69,40 +69,20 @@
 
 </header>
 
-<main>
+<main class="pl-3">
+    <h1 class="pt-4 pb-5">Recent posts</h1>
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <p class="lead text-muted">Hi there! I'm exited to see you there! You can write me right now</p>
-          <a href="mailto:mitok95@gmail.com" class="btn btn-primary my-2">Mail me</a>
-        </p>
-      </div>
-    </div>
-  </section>
+    {% for post in posts.all %}
+    <a href="#"><h2>{{post.post_title}}</h2></a>
+    </br>
+    <img src="{{ post.post_image.url }}" height="300"  width='300' class="img-fluid">
+    <p>{{post.post_text}}</p>
+    <p>{{post.post_date}}</p>
+    </br>
+    </br>   
 
-  <div class="album py-5 bg-light">
-    <div class="container">
+    {% endfor %}
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-          {% for event in events.all%}
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <img class="card-img-top" src="{{event.event_image.url}}"/>
-
-            <div class="card-body">
-              <p class="card-text">{{ event.event_text }}</p>
-              </div>
-            </div>
-          </div>
-
-          {% endfor %}
-          
-        </div>
-    </div>
-  </div>
 
 </main>
 
